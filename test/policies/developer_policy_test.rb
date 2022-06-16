@@ -24,6 +24,19 @@ class DeveloperPolicyTest < ActiveSupport::TestCase
     user = users(:developer)
     developer = create_invisible_developer!
     refute DeveloperPolicy.new(user, developer).show?
+
+    developer = UnownedRecord.new
+    refute DeveloperPolicy.new(nil, developer).show?
+  end
+
+  class UnownedRecord
+    def user
+      nil
+    end
+
+    def visible?
+      false
+    end
   end
 
   def create_invisible_developer!

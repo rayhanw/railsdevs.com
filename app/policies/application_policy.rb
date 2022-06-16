@@ -39,6 +39,6 @@ class ApplicationPolicy
   end
 
   def record_owner?
-    user == record.user
+    user.present? && user == record.user
   end
 end
