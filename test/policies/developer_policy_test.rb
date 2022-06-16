@@ -29,6 +29,12 @@ class DeveloperPolicyTest < ActiveSupport::TestCase
     refute DeveloperPolicy.new(nil, developer).show?
   end
 
+  test "admins can see invisible profiles" do
+    user = users(:admin)
+    developer = create_invisible_developer!
+    assert DeveloperPolicy.new(user, developer).show?
+  end
+
   class UnownedRecord
     def user
       nil
