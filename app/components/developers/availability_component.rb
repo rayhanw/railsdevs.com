@@ -28,6 +28,10 @@ module Developers
       time_ago_in_words(developer.available_on)
     end
 
+    def span_classes
+      ["ml-2", "text-sm", "font-medium", "text-green-700": available?]
+    end
+
     private
 
     def show_unavailable_icon?
