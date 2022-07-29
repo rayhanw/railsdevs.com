@@ -32,6 +32,13 @@ module NavBar
       ]
     end
 
+    def nav_classes
+      [
+        "bg-gray-800",
+        "fixed top-0 left-0 right-0 z-50": helpers.turbo_native_app?
+      ]
+    end
+
     private
 
     def build_user_links
